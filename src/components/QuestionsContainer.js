@@ -9,9 +9,7 @@ const QuestionsContainer = ({ heading, questionIds }) => {
       <Card.Body>
         <Card.Text>
           {questionIds.map((id) => (
-            <li key={id}>
-              <div>Question ID: {id}</div>
-            </li>
+            <li key={id}>Question ID: {id}</li>
           ))}
         </Card.Text>
       </Card.Body>
