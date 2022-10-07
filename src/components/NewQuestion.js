@@ -2,17 +2,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { handleAddQuestion } from "../actions/questions";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Toast from "react-bootstrap/Toast";
-import ToastContainer from "react-bootstrap/ToastContainer";
+import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import { connect } from "react-redux";
 
 const NewQuestion = (props) => {
   const { authedUser, dispatch } = props;
-  const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
   const [optionOneText, setOptionOneText] = useState("");
   const [optionTwoText, setOptionTwoText] = useState("");
@@ -32,7 +29,7 @@ const NewQuestion = (props) => {
     dispatch(handleAddQuestion(question));
     setOptionOneText("");
     setOptionTwoText("");
-    setShow(true);
+    navigate("/");
   };
 
   return (
@@ -74,25 +71,6 @@ const NewQuestion = (props) => {
           </Form>
         </div>
       </div>
-      <Row>
-        <Col xs={6}>
-          <ToastContainer className="p-3" position="top-end">
-            <Toast
-              onClose={() => setShow(false)}
-              show={show}
-              delay={3000}
-              autohide
-            >
-              <Toast.Header>
-                <strong className="me-auto">Employee Polls</strong>
-                <small>a few seconds ago</small>
-              </Toast.Header>
-              <Toast.Body>Woohoo, you created a new poll!</Toast.Body>
-            </Toast>
-          </ToastContainer>
-        </Col>
-        <Col xs={6}></Col>
-      </Row>
     </Container>
   );
 };
