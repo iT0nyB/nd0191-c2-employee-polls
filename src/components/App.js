@@ -4,6 +4,7 @@ import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
 import Container from "react-bootstrap/Container";
 import NavigationBar from "./NavigationBar";
+import Login from "./Login";
 
 const App = (props) => {
   useEffect(() => {
@@ -11,10 +12,20 @@ const App = (props) => {
   }, [props]);
   return (
     <Container className="p-3">
-      <NavigationBar />
-      <Dashboard />
+      {props.authedUser === null ? (
+        <Login />
+      ) : (
+        <div>
+          <NavigationBar />
+          <Dashboard />
+        </div>
+      )}
     </Container>
   );
 };
 
-export default connect()(App);
+const mapStateToProps = ({ authedUser }) => ({
+  authedUser,
+});
+
+export default connect(mapStateToProps)(App);
