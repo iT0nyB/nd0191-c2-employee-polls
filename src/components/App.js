@@ -7,6 +7,7 @@ import NavigationBar from "./NavigationBar";
 import Login from "./Login";
 import { Route, Routes } from "react-router-dom";
 import NewQuestion from "./NewQuestion";
+import Question from "./Question";
 
 const App = (props) => {
   useEffect(() => {
@@ -24,6 +25,7 @@ const App = (props) => {
             <Route exact path="/" element={<Dashboard />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/add" element={<NewQuestion />} />
+            <Route path="/questions/:question_id" element={<Question />} />
           </Routes>
         </div>
       )}

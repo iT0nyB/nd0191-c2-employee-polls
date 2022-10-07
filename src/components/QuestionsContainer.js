@@ -1,5 +1,5 @@
 import Card from "react-bootstrap/Card";
-import Question from "./Question";
+import QuestionCard from "./QuestionCard";
 
 const QuestionsContainer = ({ heading, questionIds }) => {
   return (
@@ -10,7 +10,7 @@ const QuestionsContainer = ({ heading, questionIds }) => {
       <Card.Body>
         <div className="row">
           {questionIds.map((id) => (
-            <Question key={id} id={id} />
+            <QuestionCard key={id} id={id} />
           ))}
         </div>
       </Card.Body>

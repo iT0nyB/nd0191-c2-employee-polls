@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import setAuthedUser from "../actions/authedUser";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { useState } from "react";
 
@@ -12,6 +12,7 @@ const Login = ({ users, dispatch }) => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const location = useLocation();
   const validate = () => {
     return username.length > 0 && password.length > 0;
   };
@@ -24,7 +25,12 @@ const Login = ({ users, dispatch }) => {
       users.find((user) => user.password === password)
     ) {
       dispatch(setAuthedUser(username));
-      navigate("/");
+      const path = location.pathname;
+      if (path.contains("login")) {
+        navigate("/");
+      } else {
+        navigate(path);
+      }
     } else {
       alert("Username or Password incorrect");
     }

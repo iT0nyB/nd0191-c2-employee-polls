@@ -28,11 +28,11 @@ export const handleAddQuestion = (question) => {
   };
 };
 
-export const saveQuestionAnswer = ({ authedUser, id, answer }) => {
+export const saveQuestionAnswer = ({ authedUser, qid, answer }) => {
   return {
     type: SAVE_QUESTION_ANSWER,
     authedUser,
-    id,
+    qid,
     answer,
   };
 };

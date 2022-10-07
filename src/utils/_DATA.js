@@ -133,7 +133,7 @@ let questions = {
     author: "mtsamis",
     timestamp: 1493579767190,
     optionOne: {
-      votes: ["mtsamis", "zoshikanlu"],
+      votes: ["mtsamis", "zoshikanlu", "abaptiste"],
       text: "deploy to production once every two weeks",
     },
     optionTwo: {

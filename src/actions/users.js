@@ -9,11 +9,11 @@ export const receiveUsers = (users) => {
   };
 };
 
-export const addAnswerToUser = ({ authedUser, id, answer }) => {
+export const addAnswerToUser = ({ authedUser, qid, answer }) => {
   return {
     type: ADD_ANSWER_TO_USER,
     authedUser,
-    id,
+    qid,
     answer,
   };
 };
