@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import QuestionStats from "./QuestionStats";
 import { handleSaveAnswer } from "../actions/shared";
@@ -20,9 +20,16 @@ const Question = (props) => {
   const [answered, setAnswered] = useState(false);
 
   const question = questions[question_id];
+
+  const navigate = useNavigate();
+
   const author = users[question.author];
 
   useEffect(() => {
+    if (question === null || question === undefined) {
+      navigate("/not-found");
+    }
+
     const loggedIn = users[authedUser];
     const myAnswers = loggedIn.answers;
 
@@ -37,7 +44,7 @@ const Question = (props) => {
     if (loggedInAnswer.length > 0) {
       setAnswered(true);
     }
-  }, [authedUser, users, question_id]);
+  }, [authedUser, users, question_id, navigate, question]);
 
   const optionOneStats = () => {
     const num = question.optionOne.votes.length;
@@ -71,77 +78,76 @@ const Question = (props) => {
       qid: question_id,
       answer: ans,
     };
-
-    console.log(answerDTO);
     dispatch(handleSaveAnswer(answerDTO));
   };
-
   return (
-    <Row>
-      <Container className="w-75 mx-auto">
-        <CardGroup>
-          <Card>
-            <Card.Body className="text-center">
-              <h3>Poll by {author.id}</h3>
-              <img src={author.avatarURL} alt="nothing" width="200" />
-              <h3>Would You Rather?</h3>
-              <Row>
-                <Col xs={6}>
-                  <Card>
-                    <Card.Body>
-                      {question.optionOne.text}
-                      {!answered && (
-                        <div className="d-grid gap-2 mt-2">
-                          <Button
-                            variant="success"
-                            onClick={() => handleAns("optionOne")}
-                          >
-                            Click
-                          </Button>
-                        </div>
-                      )}
-                      {answered && (
-                        <QuestionStats
-                          myAnswer={question.optionOne.votes.includes(
-                            authedUser
-                          )}
-                          stats={optionOneStats()}
-                        />
-                      )}
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col xs={6}>
-                  <Card>
-                    <Card.Body>
-                      {question.optionTwo.text}
-                      {!answered && (
-                        <div className="d-grid gap-2 mt-2">
-                          <Button
-                            variant="success"
-                            onClick={() => handleAns("optionTwo")}
-                          >
-                            Click
-                          </Button>
-                        </div>
-                      )}
-                      {answered && (
-                        <QuestionStats
-                          myAnswer={question.optionTwo.votes.includes(
-                            authedUser
-                          )}
-                          stats={optionTwoStats()}
-                        />
-                      )}
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card>
-        </CardGroup>
-      </Container>
-    </Row>
+    question && (
+      <Row>
+        <Container className="w-75 mx-auto">
+          <CardGroup>
+            <Card>
+              <Card.Body className="text-center">
+                <h3>Poll by {author.id}</h3>
+                <img src={author.avatarURL} alt="nothing" width="200" />
+                <h3>Would You Rather?</h3>
+                <Row>
+                  <Col xs={6}>
+                    <Card>
+                      <Card.Body>
+                        {question.optionOne.text}
+                        {!answered && (
+                          <div className="d-grid gap-2 mt-2">
+                            <Button
+                              variant="success"
+                              onClick={() => handleAns("optionOne")}
+                            >
+                              Click
+                            </Button>
+                          </div>
+                        )}
+                        {answered && (
+                          <QuestionStats
+                            myAnswer={question.optionOne.votes.includes(
+                              authedUser
+                            )}
+                            stats={optionOneStats()}
+                          />
+                        )}
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                  <Col xs={6}>
+                    <Card>
+                      <Card.Body>
+                        {question.optionTwo.text}
+                        {!answered && (
+                          <div className="d-grid gap-2 mt-2">
+                            <Button
+                              variant="success"
+                              onClick={() => handleAns("optionTwo")}
+                            >
+                              Click
+                            </Button>
+                          </div>
+                        )}
+                        {answered && (
+                          <QuestionStats
+                            myAnswer={question.optionTwo.votes.includes(
+                              authedUser
+                            )}
+                            stats={optionTwoStats()}
+                          />
+                        )}
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+          </CardGroup>
+        </Container>
+      </Row>
+    )
   );
 };
 

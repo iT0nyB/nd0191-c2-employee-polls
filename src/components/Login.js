@@ -26,7 +26,7 @@ const Login = ({ users, dispatch }) => {
     ) {
       dispatch(setAuthedUser(username));
       const path = location.pathname;
-      if (path.contains("login")) {
+      if (path.includes("login")) {
         navigate("/");
       } else {
         navigate(path);
