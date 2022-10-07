@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import AuthedUser from "./AuthedUser";
 
 const NavigationBar = () => {
   return (
@@ -15,6 +16,11 @@ const NavigationBar = () => {
               <Nav.Link href="#leaderboard">Leaderboard</Nav.Link>
               <Nav.Link href="#add">New</Nav.Link>
             </Nav>
+          </Navbar.Collapse>
+          <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text>
+              <AuthedUser />
+            </Navbar.Text>
           </Navbar.Collapse>
         </Container>
       </Navbar>
