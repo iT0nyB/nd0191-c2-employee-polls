@@ -26,7 +26,6 @@ const Login = ({ users, dispatch }) => {
     } else {
       alert("Username or Password incorrect");
     }
-    console.log(users);
   };
 
   return (

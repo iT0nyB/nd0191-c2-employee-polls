@@ -5,11 +5,13 @@ import Dashboard from "./Dashboard";
 import Container from "react-bootstrap/Container";
 import NavigationBar from "./NavigationBar";
 import Login from "./Login";
+import { Route, Routes } from "react-router-dom";
 
 const App = (props) => {
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, [props]);
+
   return (
     <Container className="p-3">
       {props.authedUser === null ? (
@@ -17,7 +19,10 @@ const App = (props) => {
       ) : (
         <div>
           <NavigationBar />
-          <Dashboard />
+          <Routes>
+            <Route exact path="/" element={<Dashboard />} />
+            <Route exact path="/login" element={<Login />} />
+          </Routes>
         </div>
       )}
     </Container>
