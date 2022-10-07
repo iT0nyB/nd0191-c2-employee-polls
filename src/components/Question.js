@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 const Question = (props) => {
-  console.log(props.question);
   if (props.question === null) {
     return <p>This Question doesn't exist</p>;
   }
@@ -25,7 +24,9 @@ const Question = (props) => {
       </Card.Body>
       <Card.Footer className="text-muted">
         {" "}
-        <Button variant="outline-success">Show</Button>
+        <div className="d-grid gap-2">
+          <Button variant="outline-success">Show</Button>
+        </div>
       </Card.Footer>
     </Card>
   );
