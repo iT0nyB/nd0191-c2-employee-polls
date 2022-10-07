@@ -73,7 +73,7 @@ const Login = ({ users, dispatch }) => {
                 size="lg"
                 type="submit"
                 onClick={handleLogin}
-                disabled={!validate}
+                disabled={!validate()}
               >
                 Login
               </Button>
