@@ -52,7 +52,7 @@ let users = {
   abaptiste: {
     id: "abaptiste",
     password: "pass246",
-    name: "Anthony A.S Baptiste",
+    name: "Anthony Baptiste",
     avatarURL:
       "https://avatars.dicebear.com/v2/avataaars/30a400b630ace1dcefc6737ec5ab0d02.svg",
     answers: {
