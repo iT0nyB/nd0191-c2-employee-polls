@@ -23,7 +23,6 @@ const Login = ({ users, dispatch }) => {
       users.find((user) => user.id === username) &&
       users.find((user) => user.password === password)
     ) {
-      alert("Access is granted");
       dispatch(setAuthedUser(username));
       navigate("/");
     } else {
