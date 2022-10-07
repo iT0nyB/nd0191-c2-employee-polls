@@ -2,19 +2,28 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import AuthedUser from "./AuthedUser";
+import { LinkContainer } from "react-router-bootstrap";
 
 const NavigationBar = () => {
   return (
     <>
       <Navbar>
         <Container>
-          <Navbar.Brand href="#home">Employee Polls</Navbar.Brand>
+          <LinkContainer to="/">
+            <Navbar.Brand>Employee Polls</Navbar.Brand>
+          </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#leaderboard">Leaderboard</Nav.Link>
-              <Nav.Link href="#add">New</Nav.Link>
+              <LinkContainer to="/">
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/leaderboard">
+                <Nav.Link>Leaderboard</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/add">
+                <Nav.Link>New</Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
           <Navbar.Collapse className="justify-content-end">

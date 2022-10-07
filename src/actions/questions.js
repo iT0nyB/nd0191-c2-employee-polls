@@ -19,20 +19,20 @@ export const saveUserQuestion = (question) => {
   };
 };
 
-export function handleAddQuestion(question) {
+export const handleAddQuestion = (question) => {
   return (dispatch) => {
     return saveQuestion(question).then((question) => {
       dispatch(saveUserQuestion(question));
       dispatch(addQuestionToUser(question));
     });
   };
-}
+};
 
-export function saveQuestionAnswer({ authedUser, id, answer }) {
+export const saveQuestionAnswer = ({ authedUser, id, answer }) => {
   return {
     type: SAVE_QUESTION_ANSWER,
     authedUser,
     id,
     answer,
   };
-}
+};

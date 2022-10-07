@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import NavigationBar from "./NavigationBar";
 import Login from "./Login";
 import { Route, Routes } from "react-router-dom";
+import NewQuestion from "./NewQuestion";
 
 const App = (props) => {
   useEffect(() => {
@@ -22,6 +23,7 @@ const App = (props) => {
           <Routes>
             <Route exact path="/" element={<Dashboard />} />
             <Route exact path="/login" element={<Login />} />
+            <Route exact path="/add" element={<NewQuestion />} />
           </Routes>
         </div>
       )}
