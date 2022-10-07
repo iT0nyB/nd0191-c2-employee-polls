@@ -3,12 +3,14 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import setAuthedUser from "../actions/authedUser";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 
 const Login = ({ users, dispatch }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const validate = () => {
     return username.length > 0 && password.length > 0;
@@ -23,6 +25,7 @@ const Login = ({ users, dispatch }) => {
     ) {
       alert("Access is granted");
       dispatch(setAuthedUser(username));
+      navigate("/");
     } else {
       alert("Username or Password incorrect");
     }

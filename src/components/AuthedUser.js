@@ -1,9 +1,18 @@
 import { connect } from "react-redux";
+import setAuthedUser from "../actions/authedUser";
+
 const AuthedUser = (props) => {
-  const { username } = props;
+  const { username, dispatch } = props;
+
+  const handleLogout = (props) => {
+    dispatch(setAuthedUser(username));
+  };
   return (
     <div>
-      Signed in as: {username} <a href="/login">Logout</a>
+      Signed in as: {username}{" "}
+      <a href="/login" onClick={handleLogout}>
+        Logout
+      </a>
     </div>
   );
 };
