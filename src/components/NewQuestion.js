@@ -63,7 +63,7 @@ const NewQuestion = (props) => {
                 variant="primary"
                 type="submit"
                 onClick={handleNewQuestion}
-                disabled={!validate}
+                disabled={!validate()}
               >
                 Submit
               </Button>
