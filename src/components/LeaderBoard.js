@@ -1,6 +1,4 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import CardGroup from "react-bootstrap/CardGroup";
+import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Table from "react-bootstrap/Table";
@@ -8,11 +6,13 @@ import Table from "react-bootstrap/Table";
 import { connect } from "react-redux";
 
 const LeaderBoard = (props) => {
-  const { ranking, users } = props;
+  const { ranking, users, authedUser } = props;
   return (
     <Row>
-      <Container className="mx-auto text-center">
+      <Container className="text-center">
         <h3>LeaderBoard</h3>
+      </Container>
+      <Container className="mx-auto">
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -26,7 +26,23 @@ const LeaderBoard = (props) => {
             {ranking.map((rank) => (
               <tr key={rank}>
                 <td>{ranking.indexOf(rank) + 1}</td>
-                <td> {users[rank].name}</td>
+                <td>
+                  <Row>
+                    <Col xs={1}>
+                      <img
+                        src={users[rank].avatarURL}
+                        alt={`${rank}'s avatar`}
+                        width="35"
+                      />
+                    </Col>
+                    <Col xs={3}>
+                      {users[rank].name}
+                      <br />
+                      <span className="text-muted">{rank}</span>
+                    </Col>
+                    <Col>{rank === authedUser ? "  <- YOU " : ""}</Col>
+                  </Row>{" "}
+                </td>
                 <td> {Object.keys(users[rank].answers).length}</td>
                 <td> {Object.keys(users[rank].questions).length}</td>
               </tr>
@@ -49,6 +65,7 @@ const mapStateToProps = ({ users, authedUser }) => ({
     return _b - _a;
   }),
   users: users,
+  authedUser,
 });
 
 export default connect(mapStateToProps)(LeaderBoard);
