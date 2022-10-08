@@ -3,10 +3,7 @@ import QuestionCard from "./QuestionCard";
 
 const QuestionsContainer = ({ heading, questionIds }) => {
   return (
-    <Card className="mb-5">
-      <Card.Header as="h5" className="text-center">
-        {heading}
-      </Card.Header>
+    <Card border="light" className="mb-5">
       <Card.Body>
         <div className="row">
           {questionIds.map((id) => (

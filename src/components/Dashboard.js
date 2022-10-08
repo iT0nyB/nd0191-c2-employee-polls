@@ -1,4 +1,9 @@
 import { connect } from "react-redux";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+
 import QuestionsContainer from "./QuestionsContainer";
 
 const Dashboard = (props) => {
@@ -6,15 +11,21 @@ const Dashboard = (props) => {
   const doneQuestions = props.doneQuestions;
 
   return (
-    <div className="row">
-      <div className="w-75 mx-auto">
-        <QuestionsContainer
-          heading="New Questions"
-          questionIds={newQuestions}
-        />
-        <QuestionsContainer heading="Done" questionIds={doneQuestions} />
-      </div>
-    </div>
+    <Row>
+      <Container className="mx-auto">
+        <Tabs defaultActiveKey="new" id="questions-container" className="mb-3">
+          <Tab eventKey="new" title="New Questions">
+            <QuestionsContainer
+              heading="New Questions"
+              questionIds={newQuestions}
+            />
+          </Tab>
+          <Tab eventKey="done" title="Done Questions">
+            <QuestionsContainer heading="Done" questionIds={doneQuestions} />
+          </Tab>
+        </Tabs>
+      </Container>
+    </Row>
   );
 };
 
