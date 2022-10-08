@@ -2,6 +2,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Table from "react-bootstrap/Table";
+import { FaTrophy, FaHandPointLeft } from "react-icons/fa";
 
 import { connect } from "react-redux";
 
@@ -40,7 +41,22 @@ const LeaderBoard = (props) => {
                       <br />
                       <span className="text-muted">{rank}</span>
                     </Col>
-                    <Col>{rank === authedUser ? "  <- YOU " : ""}</Col>
+                    <Col>
+                      {rank === authedUser ? (
+                        <h2>
+                          <FaHandPointLeft />{" "}
+                        </h2>
+                      ) : (
+                        ""
+                      )}
+                      {ranking.indexOf(rank) + 1 === 1 ? (
+                        <h2>
+                          <FaTrophy />
+                        </h2>
+                      ) : (
+                        ""
+                      )}
+                    </Col>
                   </Row>{" "}
                 </td>
                 <td> {Object.keys(users[rank].answers).length}</td>
