@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login will match snapshot 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="text-center"
+      >
+        <img
+          alt="Employee Polls Logo"
+          class="mx-auto"
+          src="/assets/images/logo192.png"
+          width="150"
+        />
+        <form
+          class="w-75 mx-auto"
+        >
+          <h3>
+            Login to the Employee Polls
+          </h3>
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+              for="formBasicUsername"
+            >
+              Username
+            </label>
+            <input
+              class="form-control"
+              data-testid="username"
+              id="formBasicUsername"
+              placeholder="Enter username"
+              type="username"
+              value=""
+            />
+          </div>
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+              for="formBasicPassword"
+            >
+              Password
+            </label>
+            <input
+              class="form-control"
+              data-testid="password"
+              id="formBasicPassword"
+              placeholder="Password"
+              type="password"
+              value=""
+            />
+          </div>
+          <div
+            class="d-grid gap-2"
+          >
+            <button
+              class="btn btn-primary btn-lg"
+              data-testid="login-button"
+              disabled=""
+              type="submit"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -19,9 +19,9 @@ const NavigationBar = () => {
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/leaderboard">
-                <Nav.Link>Leaderboard</Nav.Link>
+                <Nav.Link data-testid="leaderboard-link">Leaderboard</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/add">
+              <LinkContainer to="/add" data-testid="question-link">
                 <Nav.Link>New</Nav.Link>
               </LinkContainer>
             </Nav>

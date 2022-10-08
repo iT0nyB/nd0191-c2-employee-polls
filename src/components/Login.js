@@ -51,6 +51,7 @@ const Login = ({ users, dispatch }) => {
             <Form.Group className="mb-3" controlId="formBasicUsername">
               <Form.Label>Username</Form.Label>
               <Form.Control
+                data-testid="username"
                 type="username"
                 placeholder="Enter username"
                 value={username}
@@ -61,6 +62,7 @@ const Login = ({ users, dispatch }) => {
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                data-testid="password"
                 type="password"
                 placeholder="Password"
                 value={password}
@@ -73,6 +75,7 @@ const Login = ({ users, dispatch }) => {
                 size="lg"
                 type="submit"
                 onClick={handleLogin}
+                data-testid="login-button"
                 disabled={!validate()}
               >
                 Login

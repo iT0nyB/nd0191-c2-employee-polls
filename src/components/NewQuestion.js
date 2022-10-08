@@ -42,6 +42,7 @@ const NewQuestion = (props) => {
             <Form.Group className="mb-3" controlId="formBasicOptionOne">
               <Form.Label>OptionOne</Form.Label>
               <Form.Control
+                data-testid="optionOneText"
                 type="username"
                 placeholder="First Option"
                 value={optionOneText}
@@ -52,6 +53,7 @@ const NewQuestion = (props) => {
             <Form.Group className="mb-3" controlId="formBasicOptionTwo">
               <Form.Label>OptionTwo</Form.Label>
               <Form.Control
+                data-testid="optionTwoText"
                 type="optionTwoText"
                 placeholder="Second Option"
                 value={optionTwoText}
@@ -64,6 +66,7 @@ const NewQuestion = (props) => {
                 type="submit"
                 onClick={handleNewQuestion}
                 disabled={!validate()}
+                data-testid="submit-button"
               >
                 Submit
               </Button>

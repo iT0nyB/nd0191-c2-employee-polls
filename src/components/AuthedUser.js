@@ -1,18 +1,19 @@
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import setAuthedUser from "../actions/authedUser";
 
 const AuthedUser = (props) => {
   const { username, dispatch } = props;
 
   const handleLogout = (props) => {
-    dispatch(setAuthedUser(username));
+    dispatch(setAuthedUser(null));
   };
   return (
     <div>
       Signed in as: {username}{" "}
-      <a href="/login" onClick={handleLogout}>
+      <Link to="/login" onClick={handleLogout}>
         Logout
-      </a>
+      </Link>
     </div>
   );
 };
