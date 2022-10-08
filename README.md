@@ -6,7 +6,7 @@ Users can answer polls, see which polls they haven’t answered, see how other p
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+Clone the repo to your local machine
 
 ### Prerequisites
 
@@ -14,14 +14,12 @@ What things you need to install the software and how to install them
 
 ```
 Latest NodeJs and npm
+React
+
 
 ```
 
 ### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
 
 ```
 npm install
@@ -29,11 +27,18 @@ npm install
 
 ```
 npm start
+
+```
+
+### Running Test
+
+```
+npm test
 ```
 
 ## Authors
 
-* **Anthony A.S Baptiste** - *Initial work*
+* **Anthony A.S Baptiste**
 
 ## License
 
