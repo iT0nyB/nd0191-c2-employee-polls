@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Navigate } from "react-router-dom";
 
 import QuestionStats from "./QuestionStats";
 import { handleSaveAnswer } from "../actions/shared";
@@ -19,20 +19,12 @@ const Question = (props) => {
 
   const [answered, setAnswered] = useState(false);
 
+  const navigate = useNavigate();
   const question = questions[question_id];
 
-  const navigate = useNavigate();
-
-  const author = users[question.author];
-
   useEffect(() => {
-    if (question === null || question === undefined) {
-      navigate("/not-found");
-    }
-
     const loggedIn = users[authedUser];
     const myAnswers = loggedIn.answers;
-
     const loggedInAnswer = Object.keys(myAnswers)
       .filter((answer) => {
         return answer === question_id;
@@ -40,11 +32,16 @@ const Question = (props) => {
       .map((answer) => {
         return myAnswers[answer];
       });
-
     if (loggedInAnswer.length > 0) {
       setAnswered(true);
     }
   }, [authedUser, users, question_id, navigate, question]);
+
+  if (!question) {
+    return <Navigate to="*" />;
+  }
+
+  const author = users[question.author];
 
   const optionOneStats = () => {
     const num = question.optionOne.votes.length;

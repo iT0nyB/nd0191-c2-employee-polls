@@ -1,10 +1,18 @@
-import Image from "react-bootstrap/Image";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 const ErrorPage = () => {
   return (
-    <Image
-      fluid="true"
-      src="/public/assets/images/undraw_page_not_found_re_e9o6.svg"
-    />
+    <Row>
+      <Container className="text-center">
+        <h1>404 Error</h1>
+        <h1>Page Not Found</h1>
+        <Link to="/">
+          <Button>Go Home</Button>
+        </Link>
+      </Container>
+    </Row>
   );
 };
 

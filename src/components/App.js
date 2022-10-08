@@ -29,7 +29,7 @@ const App = (props) => {
             <Route exact path="/leaderboard" element={<LeaderBoard />} />
             <Route exact path="/add" element={<NewQuestion />} />
             <Route path="/questions/:question_id" element={<Question />} />
-            <Route exact path="/not-found" element={<ErrorPage />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
       )}
