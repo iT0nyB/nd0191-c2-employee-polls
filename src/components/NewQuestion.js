@@ -60,7 +60,7 @@ const NewQuestion = (props) => {
                 onChange={(e) => setOptionTwoText(e.target.value)}
               />
             </Form.Group>
-            <div>
+            <div className="d-grid gap-2">
               <Button
                 variant="primary"
                 type="submit"
@@ -68,7 +68,7 @@ const NewQuestion = (props) => {
                 disabled={!validate()}
                 data-testid="submit-button"
               >
-                Submit
+                Submit Poll
               </Button>
             </div>
           </Form>
